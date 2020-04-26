@@ -18,3 +18,5 @@ Your survey should have 10 questions of your choosing. Each answer should be on 
 2. Javascript
 3. Node js
 4. NPM Packages
+5. Bootstrap
+6. jQuery
