@@ -13,7 +13,8 @@
 
     <style>
         body {
-            margin-right: 1.75rem;
+            margin-right: 2.50rem;
+            margin-left: 2.50rem;
         }
 
         .page-header {
@@ -34,11 +35,6 @@
         #Q9,
         #Q10 {
             margin-bottom: 1.40rem;
-        }
-
-        .btn-primary {
-            margin-left: 1.75rem;
-            margin-right: 1.75rem;
         }
     </style>
 
@@ -196,7 +192,7 @@
     </div>
 
     <button id="submitButton" type="submit" class="btn btn-lg btn-primary btn-block">
-        <h4>Submit</h4>
+        <h3>Submit</h3>
     </button>
     <hr>
 
@@ -205,7 +201,7 @@
     <footer class="footer">
         <div class="container">
             <p><a href="/api/friends">API Friends List</a> |
-                <a href="#">GitHub Repo</a></p>
+                <a href="https://github.com/asalinas9/Friend-Finder">GitHub Repo</a></p>
         </div>
     </footer>
 
@@ -226,7 +222,9 @@
                 <div class="modal-body">
 
                     <h2 id="matchName"></h2>
-                    <img id="matchImg" src="" alt="Image Not Found" style="max-width: 400px;">
+                    <img id="matchImg"
+                        src="https://static.nike.com/a/images/t_default/i1-fceee2ab-2f00-4625-8de1-d7cc5703b81b/premier-league-strike-soccer-ball-8NSb5B.jpg"
+                        alt="Image Not Found" style="max-width: 400px;">
                 </div>
 
 
@@ -288,7 +286,7 @@
                         $("#matchImg").attr("src", data.photo);
                         $("#resultsModal").modal("toggle");
                     });
-
+                    /*
                     $('#formName').val("");
                     $('#formImage').val("");
                     $('#Q1').val("");
@@ -301,15 +299,15 @@
                     $('#Q8').val("");
                     $('#Q9').val("");
                     $('#Q10').val("");
-
+                    */
                 } else {
                     alert("Please complete all fields. Thank you.")
                 }
+                return false;
 
             });
         });
     </script>
-
 
 </body>
 
