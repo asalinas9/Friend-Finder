@@ -9,52 +9,60 @@ module.exports = function (app) {
 
     app.post('/api/friends', function (req, res) {
         // The variable used to calculate the difference btn the user's socres and the scores of each user
+        var totalDiff = 0;
+        // loop through all of the possible options    
         var bestMatch = {
             name: "",
             photo: "",
-            friendDifference: 1000
+            friendDiff: 1000
         };
-
-        // Here we take the result of the user's survey POST and parse it.
+        // To take the result of the user's survey POST and parse it
         var userData = req.body;
         var userName = userData.name;
-        var userPhoto = userData.photo;
         var userScores = userData.scores;
 
-        // This variable will calculate the difference between the user's scores and the scores of
-        // each user in the database
-        var totalDifference = 0;
+        var player = userScores.map(function (myDude) {
+            return parseInt(myDude, 10);
+        });
+        userData = {
+            name: req.body.name,
+            photo: req.body.photo,
+            scores: player
+        };
 
-        // Here we loop through all the friend possibilities in the database. 
+        console.log("Name: " + userName);
+        console.log("User Score " + userScores);
+
+        var sum = player.reduce((arr, player) => arr + player, 0);
+
+        console.log("Sum of users score " + sum);
+        console.log("Best match friend diff " + bestMatch.friendDiff);
+
+        //loop through that friends score and the users score and calculate the absolute difference between the two and push that to the totalDiff   
         for (var i = 0; i < friends.length; i++) {
-
             console.log(friends[i].name);
-            totalDifference = 0;
+            totalDiff = 0;
+            console.log("Total Diff " + totalDiff);
+            console.log("Best match friend diff " + bestMatch.friendDiff);
 
-            // We then loop through all the scores of each friend
-            for (var j = 0; j < friends[i].scores[j]; j++) {
-
-                // We calculate the difference between the scores and sum them into the totalDifference
-                totalDifference += Math.abs(parseInt(userScores[j]) - parseInt(friends[i].scores[j]));
-
-                // If the sum of differences is less then the differences of the current "best match"
-                if (totalDifference <= bestMatch.friendDifference) {
-
-                    // Reset the bestMatch to be the new friend. 
-                    bestMatch.name = friends[i].name;
-                    bestMatch.photo = friends[i].photo;
-                    bestMatch.friendDifference = totalDifference;
-                }
+            var bfriendScore = friends[i].scores.reduce((arr, player) => arr + player, 0);
+            console.log("Total friend score " + bfriendScore);
+            totalDiff += Math.abs(sum - bfriendScore);
+            console.log("-------------------------> " + totalDiff);
+            // Reset the bestMatch to be the new friend. 
+            if (totalDiff <= bestMatch.friendDiff) {
+                bestMatch.name = friends[i].name;
+                bestMatch.photo = friends[i].photo;
+                bestMatch.friendDiff = totalDiff;
             }
+            console.log(totalDiff + " Total Difference");
         }
-
-        // Finally save the user's data to the database (this has to happen AFTER the check. otherwise,
-        // the database will always return that the user is the user's best friend).
+        console.log(bestMatch);
+        // The push method use to save user's data to the database
         friends.push(userData);
-
-        // Return a JSON with the user's bestMatch. This will be used by the HTML in the next page. 
+        console.log("New user added");
+        console.log(userData);
+        //will return a JSON data with the user's match
         res.json(bestMatch);
-
     });
-
-}
+};
