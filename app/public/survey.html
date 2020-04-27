@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <title>Friend Finder</title>
 
@@ -43,7 +43,9 @@
 <body>
     <div class="container">
         <div class="page-header">
-            <h1><span class="glyphicon glyphicon-list-alt"></span> Survey Questions</h1>
+            <h1><span class="glyphicon glyphicon-list-alt fa fa-twitter"></span>
+                Survey Questions
+            </h1>
         </div>
         <hr>
 
@@ -191,8 +193,9 @@
         </div>
     </div>
 
-    <button id="submitButton" type="submit" class="btn btn-lg btn-primary btn-block">
-        <h3>Submit</h3>
+    <button id="submitButton" type="submit" class="btn btn-lg  btn-primary btn-block">
+        <h3 class="fa fa-check-circle fa-lg">Submit</h3>
+
     </button>
     <hr>
 
@@ -227,7 +230,6 @@
                         alt="Image Not Found" style="max-width: 400px;">
                 </div>
 
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
@@ -235,6 +237,12 @@
             </div>
 
         </div>
+        <footer class="footer">
+            <div class="container">
+                <p><a href="/api/friends">API Friends List</a> |
+                    <a href="https://github.com/asalinas9/Friend-Finder">GitHub Repo</a></p>
+            </div>
+        </footer>
     </div>
     </div>
 
@@ -242,6 +250,7 @@
 
         $(document).ready(function () {
             $("#submitButton").on("click", function () {
+                event.preventDefault();
 
                 function newForm() {
 
