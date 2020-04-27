@@ -7,10 +7,13 @@ In this activity, you'll build a compatibility-based "FriendFinder" application 
 Your survey should have 10 questions of your choosing. Each answer should be on a scale of 1 to 5 based on how much the user agrees or disagrees with a question.
 
 ## Images of Landing/Survey Pages
+
+![](img/FFimg.png)
+
+
 ![](img/FFimg2.png)
 
 
-![](img/FFimg.png)
 
 
 # Technology Used
