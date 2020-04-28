@@ -21,19 +21,19 @@ module.exports = function (app) {
         var userName = userData.name;
         var userScores = userData.scores;
 
-        var player = userScores.map(function (myDude) {
+        var bud = userScores.map(function (myDude) {
             return parseInt(myDude, 10);
         });
         userData = {
             name: req.body.name,
             photo: req.body.photo,
-            scores: player
+            scores: bud
         };
 
         console.log("Name: " + userName);
         console.log("User Score " + userScores);
 
-        var sum = player.reduce((arr, player) => arr + player, 0);
+        var sum = bud.reduce((arr, bud) => arr + bud, 0);
 
         console.log("Sum of users score " + sum);
         console.log("Best match friend diff " + bestMatch.friendDiff);
@@ -45,7 +45,7 @@ module.exports = function (app) {
             console.log("Total Diff " + totalDiff);
             console.log("Best match friend diff " + bestMatch.friendDiff);
 
-            var bfriendScore = friends[i].scores.reduce((arr, player) => arr + player, 0);
+            var bfriendScore = friends[i].scores.reduce((arr, bud) => arr + bud, 0);
             console.log("Total friend score " + bfriendScore);
             totalDiff += Math.abs(sum - bfriendScore);
             console.log("-------------------------> " + totalDiff);
